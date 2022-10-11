@@ -5,14 +5,34 @@
 
 <h1>Anime Ratings</h1>
 
-<ul>
-    <li>
-       <a asp-controller="Animes" asp-action="Genre">Romance</a>
-    </li>
-    <li>
-       <a asp-controller="Animes" asp-action="Genre">Fantasy</a>
-    </li>
-    <li>
-       <a asp-controller="Animes" asp-action="Genre">Action</a>
-    </li>
-</ul>
+<section class="row card-group">
+    <div class="col-lg-3 mb-3">
+        <div class="card mb-4">
+            <div class="card-body text-center h-100">
+                <a asp-controller="Animes" asp-action="Genre" asp-route-GenreName="Romance" class="btn btn-dark">Romance</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 mb-3">
+        <div class="card mb-4">
+            <div class="card-body text-center h-100">
+                <a asp-controller="Animes" asp-action="Genre" asp-route-GenreName="Fantasy">Fantasy</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 mb-3">
+        <div class="card mb-4">
+            <div class="card-body text-center h-100">
+                <a asp-controller="Animes" asp-action="Genre" asp-route-GenreName="Action">Action</a>
+            </div>
+        </div>
+    </div>
+     <div class="col-lg-3 mb-3">
+        <div class="card mb-4">
+            <div class="card-body text-center h-100">
+                <a asp-controller="Animes" asp-action="Genre" asp-route-GenreName="Adventure">Adventure</a>
+            </div>
+        </div>
+    </div>
+</section>

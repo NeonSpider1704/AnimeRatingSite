@@ -1,7 +1,14 @@
-﻿@{
+﻿@model IEnumerable<AnimeRatingSite.Models.Anime>
+@{
     ViewData["Title"] = "Browse by Genre";
 }
-<h1>You are looking at </h1>
+<h1>You are looking at @ViewData["GenreName"] Animes</h1>
 
+<a asp-controller="Animes" asp-action="Index">Animes</a>
+<ul>
+    @foreach(var anime in Model){
+        <li>@anime.Title</li>
+    }
+</ul>
 
-<a class="btn btn-primary" href="javascript:history.go(-1)"><-- Back</a>
+<a class="btn btn-dark" href="javascript:history.go(-1)"><-- Back</a>
