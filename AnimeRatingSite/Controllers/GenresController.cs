@@ -22,7 +22,7 @@ namespace AnimeRatingSite.Controllers
         // GET: Genres
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Genre.ToListAsync());
+              return View(await _context.Genre.OrderBy(g=>g.Name).ToListAsync());
         }
 
         // GET: Genres/Details/5

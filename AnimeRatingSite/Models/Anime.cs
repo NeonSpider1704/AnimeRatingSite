@@ -9,8 +9,10 @@ namespace AnimeRatingSite.Models
         [Required]
         [MaxLength(150)]
         public string? Title { get; set; }
+
         [Range(0,10, ErrorMessage = "Rating must be between 0 and 10")]
         public double Rating { get; set; }
+
         [MaxLength(4000)]
         public string? Description { get; set; }
 

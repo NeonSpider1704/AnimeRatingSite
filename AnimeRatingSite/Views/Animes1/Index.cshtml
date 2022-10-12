@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<AnimeRatingSite.Models.Anime>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Anime Series";
 }
 
-<h1>Index</h1>
+<h1>Anime Series</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-dark table-striped table-hover sortable">
     <thead>
         <tr>
             <th>
@@ -21,13 +21,13 @@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            <th>
+            <th class="sorttable_nosort">
                 @Html.DisplayNameFor(model => model.Image)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Genre)
             </th>
-            <th></th>
+            <th class="sorttable_nosort"></th>
         </tr>
     </thead>
     <tbody>

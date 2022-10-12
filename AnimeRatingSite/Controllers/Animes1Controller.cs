@@ -23,7 +23,7 @@ namespace AnimeRatingSite.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Anime.Include(a => a.Genre);
-            return View(await applicationDbContext.ToListAsync());
+            return View(await applicationDbContext.OrderBy(a=>a.Title).ToListAsync());
         }
 
         // GET: Animes1/Details/5
