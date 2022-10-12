@@ -18,6 +18,7 @@ namespace AnimeRatingSite.Models
 
         public string? Image { get; set; }
 
+        [Display(Name = "Genre")]
         public int GenreId { get; set; }
 
         //Paretn reference for auto-joins

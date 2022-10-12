@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AnimeRatingSite.Data;
 using AnimeRatingSite.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace AnimeRatingSite.Controllers
 {
@@ -48,7 +49,7 @@ namespace AnimeRatingSite.Controllers
         // GET: Animes1/Create
         public IActionResult Create()
         {
-            ViewData["GenreId"] = new SelectList(_context.Genre, "GenreId", "Name");
+            ViewData["GenreId"] = new SelectList(_context.Genre.OrderBy(g=>g.Name), "GenreId", "Name");
             return View();
         }
 
@@ -163,6 +164,18 @@ namespace AnimeRatingSite.Controllers
         private bool AnimeExists(int id)
         {
           return _context.Anime.Any(e => e.AnimeId == id);
+        }
+
+        private static string UploadImage(IFormFile Image)
+        {
+            var filePath = Path.GetTempFileName();
+            var fileName = Guid.NewGuid() + "-" + Image.FileName;
+            var uploadPath = System.IO.Directory.GetCurrentDirectory() + "\\wwwroot\\img\\animes";
+            using (var stream = new FileStream(uploadPath, FileMode.Create))
+            {
+                Image.CopyTo(stream);
+            }
+            return fileName;
         }
     }
 }
