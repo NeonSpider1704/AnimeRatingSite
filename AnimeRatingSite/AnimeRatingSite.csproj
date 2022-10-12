@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\img\animes\" />
+    <Folder Include="wwwroot\img\animeRecommendations\" />
   </ItemGroup>
 
 </Project>

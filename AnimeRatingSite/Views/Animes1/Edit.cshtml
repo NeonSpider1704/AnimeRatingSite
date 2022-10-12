@@ -32,6 +32,9 @@
                 <label asp-for="Image" class="control-label"></label>
                 <input asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
+                @if(Model.Image != null){
+                    <img src="~/img/animes/@Model.Image" alt="Anime Image" />
+                }
             </div>
             <div class="form-group">
                 <label asp-for="GenreId" class="control-label"></label>
@@ -41,6 +44,7 @@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
+            <input type="hidden" name="CurrentImage" value="@Model.Image" />
         </form>
     </div>
 </div>

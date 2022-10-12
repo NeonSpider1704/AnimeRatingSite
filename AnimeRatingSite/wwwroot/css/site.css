@@ -24,3 +24,19 @@ table.sortable th:hover{
 .sorttable_nosort:hover {
     cursor: default !important;
 }
+
+.thumbnail{
+    height: 100px;
+}
+
+.navbar-dark{
+    background-color:#ba2ce4;
+}
+
+a {
+    color: #ba2ce4;
+}
+
+a:hover {
+    color: #810ee8;
+}

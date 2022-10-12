@@ -43,7 +43,9 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Image)
+                @if (item.Image != null){
+                    <img src="~/img/animes/@item.Image" alt="Anime Image" class="thumbnail"/>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Genre.Name)

@@ -58,10 +58,15 @@ namespace AnimeRatingSite.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AnimeId,Title,Rating,Description,Image,GenreId")] Anime anime)
+        public async Task<IActionResult> Create([Bind("AnimeId,Title,Rating,Description,GenreId")] Anime anime, IFormFile? Image)
         {
             if (ModelState.IsValid)
             {
+                if(Image != null)
+                {
+                    var fileName = UploadImage(Image);
+                    anime.Image = fileName;
+                }
                 _context.Add(anime);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -92,7 +97,7 @@ namespace AnimeRatingSite.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AnimeId,Title,Rating,Description,Image,GenreId")] Anime anime)
+        public async Task<IActionResult> Edit(int id, [Bind("AnimeId,Title,Rating,Description,GenreId")] Anime anime, IFormFile? Image, string? CurrentImage)
         {
             if (id != anime.AnimeId)
             {
@@ -103,6 +108,15 @@ namespace AnimeRatingSite.Controllers
             {
                 try
                 {
+                    if(Image != null)
+                    {
+                        var fileName = UploadImage(Image);
+                        anime.Image = fileName;
+                    }
+                    else
+                    {
+                        anime.Image = CurrentImage;
+                    }
                     _context.Update(anime);
                     await _context.SaveChangesAsync();
                 }
@@ -170,7 +184,7 @@ namespace AnimeRatingSite.Controllers
         {
             var filePath = Path.GetTempFileName();
             var fileName = Guid.NewGuid() + "-" + Image.FileName;
-            var uploadPath = System.IO.Directory.GetCurrentDirectory() + "\\wwwroot\\img\\animes";
+            var uploadPath = System.IO.Directory.GetCurrentDirectory() + "\\wwwroot\\img\\animes\\" + fileName;
             using (var stream = new FileStream(uploadPath, FileMode.Create))
             {
                 Image.CopyTo(stream);
