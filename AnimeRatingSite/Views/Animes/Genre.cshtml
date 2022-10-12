@@ -4,7 +4,17 @@
 }
 <h1>You are looking at @ViewData["GenreName"] Animes</h1>
 
-<a asp-controller="Animes" asp-action="Index">Animes</a>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a asp-controller="Animes" asp-action="Index">Animes</a>
+        </li>
+        <li class="breadcrumb-item active">
+            @ViewData["GenreName"]
+        </li>
+    </ol>
+</nav>
+
 <ul>
     @foreach(var anime in Model){
         <li>@anime.Title</li>
