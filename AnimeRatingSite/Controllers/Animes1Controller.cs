@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using AnimeRatingSite.Data;
 using AnimeRatingSite.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AnimeRatingSite.Controllers
 {
+    [Authorize]
     public class Animes1Controller : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -28,6 +30,7 @@ namespace AnimeRatingSite.Controllers
         }
 
         // GET: Animes1/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Anime == null)
