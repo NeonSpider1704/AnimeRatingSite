@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AnimeRatingSite.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator")]
     public class GenresController : Controller
     {
         private readonly ApplicationDbContext _context;

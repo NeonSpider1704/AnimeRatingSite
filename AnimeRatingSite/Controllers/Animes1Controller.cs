@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AnimeRatingSite.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator")]
     public class Animes1Controller : Controller
     {
         private readonly ApplicationDbContext _context;
