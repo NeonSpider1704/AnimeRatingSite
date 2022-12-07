@@ -35,25 +35,27 @@ namespace AnimeRatingSite.Controllers
         {
             if (id == null || _context.Anime == null)
             {
-                return NotFound();
+                //return NotFound();
+                return View("404");
             }
 
             var anime = await _context.Anime
                 .Include(a => a.Genre)
                 .FirstOrDefaultAsync(m => m.AnimeId == id);
+
             if (anime == null)
             {
-                return NotFound();
+                return View("404");
             }
 
-            return View(anime);
+            return View("Details", anime);
         }
 
         // GET: Animes1/Create
         public IActionResult Create()
         {
             ViewData["GenreId"] = new SelectList(_context.Genre.OrderBy(g=>g.Name), "GenreId", "Name");
-            return View();
+            return View("Create");
         }
 
         // POST: Animes1/Create
@@ -83,16 +85,18 @@ namespace AnimeRatingSite.Controllers
         {
             if (id == null || _context.Anime == null)
             {
-                return NotFound();
+                //return NotFound();
+                return View("404");
             }
 
             var anime = await _context.Anime.FindAsync(id);
             if (anime == null)
             {
-                return NotFound();
+                //return NotFound();
+                return View("404");
             }
             ViewData["GenreId"] = new SelectList(_context.Genre, "GenreId", "Name", anime.GenreId);
-            return View(anime);
+            return View("Edit",anime);
         }
 
         // POST: Animes1/Edit/5
@@ -145,7 +149,8 @@ namespace AnimeRatingSite.Controllers
         {
             if (id == null || _context.Anime == null)
             {
-                return NotFound();
+                //return NotFound();
+                return View("404");
             }
 
             var anime = await _context.Anime
@@ -153,10 +158,11 @@ namespace AnimeRatingSite.Controllers
                 .FirstOrDefaultAsync(m => m.AnimeId == id);
             if (anime == null)
             {
-                return NotFound();
+                //return NotFound();
+                return View("404");
             }
 
-            return View(anime);
+            return View("Delete",anime);
         }
 
         // POST: Animes1/Delete/5
